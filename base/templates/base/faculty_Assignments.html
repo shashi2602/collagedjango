@@ -1,0 +1,48 @@
+{% extends 'home_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Faculty - All Assignments
+    {% endblock %}
+{% block facultycontent %}
+<main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+{%if assignments|length == 0 %}
+
+<div class="container">
+    <h3 class="text-center">Not Content</h3>
+  </div>
+{% else %}
+<div class="container pt-4">
+    <form id="searchForm" method="GET">
+        {{filter.form|crispy}}
+        
+		<input class="btn btn-primary" type="submit" value="search">
+    </form>
+{% for note in assignments%}
+    {% if user.username == note.assignment.by.username %}
+    <div id="accordion" style="padding-top: 10px;">
+
+        <div class="card">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#collapse{{note.id}}">
+              
+              <span class="badge badge-warning">{{note.submit_by}} </span>
+                / <span class="badge badge-info"> {{note.submit_by.profile.student.year}}yr</span> / 
+                <span class="badge badge-primary">{{note.assignment.subject}}</span>
+            </a>
+          </div>
+          <div id="collapse{{note.id}}" class="collapse show" data-parent="#accordion">
+            <div class="card-body">
+              <h5>{{note.assignment}}</h5>
+              <p><a href="{{note.Link}}">
+              <span class="badge badge-success">{{note.Link}}</span>
+              </a></p>
+            </div>
+          </div>
+        </div>
+    {%endif%}
+{% endfor %} 
+
+{%endif%}
+</main>
+{% endblock facultycontent %}
+</div>

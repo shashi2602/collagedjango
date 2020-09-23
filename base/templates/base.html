@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://tailwindcomponents.com/css/component.dashboard-template.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<title>
+  {%block title%}
+    Welcome
+  {%endblock%}
+</title>
+</head>
+<body class="h-screen  " style="background: #edf2f7;">
+  {% if messages %}
+  {% for message in messages %}
+   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{message}}
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+          </button>
+   </div>
+  {% endfor %}  
+  </div>
+  {% endif %}
+<header class="py-4 px-6 absolute top-0 left-0 right-0 z-10">
+    <div class="container mx-auto">
+      <div class="flex items-center">
+        <div class="flex-1">
+              <div class="justify-center md:justify-start">
+                <a href="#" class="bg-black text-white font-bold text-xl p-4">Jits</a>
+            </div>
+        </div>
+        <button class="text-secondary lg:hidden">
+          <svg class="current-fill h-6 w-6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="-49 141 512 512" style="enable-background:new -49 141 512 512;" xml:space="preserve">
+            <g>
+          
+              {% comment %} <g>
+                <path d="M413,422H1c-13.807,0-25-11.193-25-25s11.193-25,25-25h412c13.807,0,25,11.193,25,25S426.807,422,413,422z"/>
+              </g>
+              <g>
+                <path d="M413,562H1c-13.807,0-25-11.193-25-25s11.193-25,25-25h412c13.807,0,25,11.193,25,25S426.807,562,413,562z"/>
+              </g>
+              <g>
+                <path d="M413,282H1c-13.807,0-25-11.193-25-25s11.193-25,25-25h412c13.807,0,25,11.193,25,25S426.807,282,413,282z"/>
+              </g> {% endcomment %}
+            </g>
+          </svg>
+
+        </button>
+        <nav class="lg:flex items-center">
+        <div class="pr-8">
+          <a href="{% url 'account_login' %}" class="px-6 py-3 font-bold uppercase bg-dark  hover:bg-dark-400 text-white rounded">Sign In</a>
+        </div>
+        
+          {% comment %} <a href="{% url 'account_signup' %}" class="px-6 py-3 font-bold uppercase bg-dark  hover:bg-dark-400 text-white rounded">Sign Up</a> {% endcomment %}
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="relative overflow-hidden px-6 pb-6">
+    {% comment %} <img src="https://source.unsplash.com/IXUM4cJynP0" class="absolute top-0 left-2/5"> {% endcomment %}
+    <div class="container mx-auto relative">
+      <div class="flex flex-col md:flex-row items-center pt-32 pb-16 md:pb-0">
+        <div class="md:w-1/2 lg:w-1/3 mb-4 sm:mb-16 md:mb-0">
+          <h2 class="text-xl font-bold text-secondary-600 uppercase mb-2">Welcome to Jits</h2>
+          <h1 class="text-4xl md:text-5xl font-bold text-secondary leading-tight mb-6 md:mb-10">Login in to your account</h1>
+            {% block contents %}
+            {% endblock %}
+          {% comment %} <a href="#" class="bg-dark px-6 md:px-8 py-3 md:py-4 text-lg md:text-xl text-white font-bold uppercase rounded hover:bg-dark-400">More info</a> {% endcomment %}
+        </div>
+        <div class="mt-16 sm:mt-0 flex-1 flex justify-end">
+          <img src="https://i.ibb.co/L9ytGYy/3784896.jpg">
+        </div>
+      </div>
+    </div>
+  </div> 
+  
+{% comment %} {% endif %} {% endcomment %}
+</body>
+</html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ {% comment %} <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link href="https://tailwindcomponents.com/css/component.dashboard-template.css" rel="stylesheet">
+    title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+    
+    {% block body %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand " href="/" style="font-size:30px"><strong>JITS</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+        <div class=" form-inline">
+          <ul class="navbar-nav" >
+            {% if user.is_authenticated %}
+
+            <li class="nav-item"><a href="{% url 'account_email' %}" class="nav-link">Change E-mail</a></li>
+            <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Sign Out</a></li>
+            {% else %}
+            <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Sign In</a></li>
+            <li class="nav-item"><a href="{% url 'account_signup' %}" class="nav-link">Sign Up</a></li>
+            {% endif %}
+          </ul>
+          </div>
+          
+      </div>
+    </nav>
+
+    {% if messages %}
+    
+    {% for message in messages %}
+    <div class="container">
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p>{{message}}</p>
+    </div>
+  </div>
+    {% endfor %}
+
+{% endif %}
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+  </body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+
+{% comment %} 
+<header class="py-4 px-6 absolute top-0 left-0 right-0 z-10">
+    <div class="container mx-auto">
+      <div class="flex items-center">
+        <div class="flex-1">
+              <div class="justify-center md:justify-start">
+                <a href="#" class="bg-black text-white font-bold text-xl p-4">Jits</a>
+            </div>
+        </div>
+        <button class="text-secondary lg:hidden">
+          <svg class="current-fill h-6 w-6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="-49 141 512 512" style="enable-background:new -49 141 512 512;" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M413,422H1c-13.807,0-25-11.193-25-25s11.193-25,25-25h412c13.807,0,25,11.193,25,25S426.807,422,413,422z"/>
+              </g>
+              <g>
+                <path d="M413,562H1c-13.807,0-25-11.193-25-25s11.193-25,25-25h412c13.807,0,25,11.193,25,25S426.807,562,413,562z"/>
+              </g>
+              <g>
+                <path d="M413,282H1c-13.807,0-25-11.193-25-25s11.193-25,25-25h412c13.807,0,25,11.193,25,25S426.807,282,413,282z"/>
+              </g>
+            </g>
+          </svg>
+
+        </button>
+        <nav class="hidden lg:flex items-center">
+          <a href="#" class="px-6 py-3 font-bold uppercase text-primary border-b-2 border-primary">Home</a>
+          <a href="#our-process" class="px-6 py-3 font-bold uppercase text-secondary hover:text-primary">Process</a>
+          <a href="#about-us" class="px-6 py-3 font-bold uppercase text-secondary hover:text-primary">About us</a>
+          <a href="#services" class="px-6 py-3 font-bold uppercase text-secondary hover:text-primary">Services</a>
+          <a href="#testimonials" class="px-6 py-3 font-bold uppercase text-secondary hover:text-primary">Testimonials</a>
+          <a href="#contact" class="px-6 py-3 font-bold uppercase bg-primary hover:bg-primary-400 text-secondary rounded">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div class="relative overflow-hidden px-6 pb-6">
+    <img src="https://raw.githubusercontent.com/highscoresl/tw-social-landing-template/030a49f6755c29e294d16493e67a7b73b826ace8/public/images/wave.svg" class="absolute top-0 left-2/5">
+    <div class="container mx-auto relative">
+      <div class="flex flex-col md:flex-row items-center pt-32 pb-16 md:pb-0">
+        <div class="md:w-1/2 lg:w-1/3 mb-4 sm:mb-16 md:mb-0">
+          <h2 class="text-xl font-bold text-secondary-600 uppercase mb-2">Lorem ipsum dolor</h2>
+          <h1 class="text-4xl md:text-5xl font-bold text-secondary leading-tight mb-6 md:mb-10">Social Network Management</h1>
+          <a href="#" class="bg-primary px-6 md:px-8 py-3 md:py-4 text-lg md:text-xl text-secondary font-bold uppercase rounded hover:bg-primary-400">More info</a>
+        </div>
+        <div class="mt-16 sm:mt-0 flex-1 flex justify-end">
+          <img src="https://raw.githubusercontent.com/highscoresl/tw-social-landing-template/030a49f6755c29e294d16493e67a7b73b826ace8/public/images/hero.svg">
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}

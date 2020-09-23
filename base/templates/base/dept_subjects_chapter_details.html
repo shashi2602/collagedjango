@@ -1,0 +1,49 @@
+{% extends 'home_base.html' %} {% load embed_video_tags %}
+{% block title %}
+{{tp}}
+    {% endblock %}
+{% block content %}
+<main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 pb-8" >
+<nav aria-label="breadcrumb" class="container pt-4">
+  <ol class="breadcrumb" class="bg-light">
+    <li class="breadcrumb-item "><a href="/dashboard">Home</a></li>
+    <li class="breadcrumb-item">{{dept}}</li>
+    <li class="breadcrumb-item">{{sub}}</li>
+    <li class="breadcrumb-item">{{ch}}</li>
+    <li class="breadcrumb-item active">{{tp}}</li>
+  </ol>
+</nav>
+{% if details|length == 0 %}
+<div class="container">
+  <h3 class="text-center">Not Content</h3>
+</div>
+{%else%}
+{% for subject in details %}
+  <div class="container">
+    <div class="flex container mx-auto px-4 py-2 bg-white rounded-lg ">   
+          <div class="flex-initial">
+               <a href="{{subject.video_clip_url}}" target="_blank"> <img src="https://img.icons8.com/fluent/48/000000/play-button-circled.png" class="p-2" /></a>
+                 {% comment %} <p class="font-bold text-center text-base p-4"><a href="" class="text-white "> PDF</a></p> {% endcomment %}
+            </div>
+           <div class="flex-auto text-gray-700 px-4 py-2">
+               <h3 class="text-black text-lg font-bold " style="padding-bottom:1px">{{subject.chapter_name}}</h3>
+               <p style="padding-bottom:0px" class="text-normal">{{subject.topic_name}}</p>
+            </div>
+             <div class="flex-initial">
+               <a href="{{subject.PDF_url.url}}" target="_blank"> <img src="https://img.icons8.com/color/48/000000/export-pdf.png"  class="p-2" /></a>
+                 {% comment %} <p class="font-bold text-center text-base p-4"><a href="" class="text-white "> PDF</a></p> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <h5 class="pt-4"> Author : {{subject.author}} </h5>
+    </div>
+    <div class="container">
+      <p>{{subject.notes|safe}}</p>
+    </div>
+
+{% endfor %}
+
+{%endif%}
+ {% endblock  %}
+</main>

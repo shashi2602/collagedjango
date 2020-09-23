@@ -1,0 +1,51 @@
+{% extends 'home_base.html' %}
+{% block title %}
+Student - Answered
+{% endblock %}
+{% block studentcontent %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Answered</li>
+    </ol>
+  </nav>
+<div class="container pt-5">
+<table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Given By</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for note in questions %}
+    {% if note|length == 0 %}
+        {% if note.dept.shortname == user.profile.student.dept and note.year == user.profile.student.year %}
+             {% for answer in ans %}
+                 {% if answer.question.question == note.question %}
+                     {% if answer.answer_by.username == user.username %}
+            <tr>
+                <td>
+                     <a href="/questions/student/answer/{{answer.question.slug_q}}" class="text-black">{{forloop.counter}}.{{note.question}}</a>
+                     <td>
+                     <span class="text-blue-800">@{{note.question_by}}</span>
+                    </td>
+                </td>
+                <td>
+                     <span  class="text-white font-bold badge badge-success" > Answered</span>  </p>
+                    </td>
+                </tr>
+                        {% endif %} 
+                {% endif %}
+            {% endfor %} 
+          
+        {% endif %}
+        {% else %}
+            No questions  {{user.username}}
+        {% endif %}
+{% endfor %} 
+{% endblock  %}
+</tbody>
+</table>
+</div>

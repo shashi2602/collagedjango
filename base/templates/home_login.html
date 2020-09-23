@@ -1,0 +1,217 @@
+{% extends "home_base.html" %} 
+{% block title %}
+    Dashboard - {{user.username}}
+    {% endblock %}
+    {% block facultycontent %}
+   
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+
+                 <div class="container mx-auto px-6 py-8">
+            <div class="mt-4">
+            <div class="p-6 bg-indigo-200 rounded-md shadow-md" style="background:url('https://image.freepik.com/free-vector/classic-blue-background-abstract-style_23-2148427985.jpg')">
+            <h3 class="text-white text-3xl font-extrabold " style="padding-bottom:5px"> Hello,{{ user.username}}</h3>
+            <p class="text-white text-base font-extrabold ">Learn anywhere,anytime</p>
+          </div>
+        </div>
+    </div>
+
+                <div class="container mx-auto px-6 py-8">
+                    <h3 class="text-gray-700 text-xl font-medium">Data</h3>
+
+                    <div class="mt-4">
+                        <div class="flex flex-wrap -mx-6">
+                            <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"width="24" height="24"viewBox="0 0 226 226"style=" fill:#000000;">
+<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="#ffffff"><path d="M0,0v226h160.08333l65.91667,-65.91667v-160.08333zM18.83333,18.83333h188.33333v131.83333h-56.5v56.5h-131.83333zM56.5,65.91667v9.41667h94.16667v-9.41667zM56.5,103.58333v9.41667h113v-9.41667z"></path></g></g></svg>
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{notes|length}}</h4>
+                                        <div class="text-gray-500">Notes Written</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-orange-600 bg-opacity-75">
+                                        <svg class="h-8 w-8 text-white" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.2 9.08889C18.2 11.5373 16.3196 13.5222 14 13.5222C11.6804 13.5222 9.79999 11.5373 9.79999 9.08889C9.79999 6.64043 11.6804 4.65556 14 4.65556C16.3196 4.65556 18.2 6.64043 18.2 9.08889Z" fill="currentColor"/>
+                                            <path d="M25.2 12.0444C25.2 13.6768 23.9464 15 22.4 15C20.8536 15 19.6 13.6768 19.6 12.0444C19.6 10.4121 20.8536 9.08889 22.4 9.08889C23.9464 9.08889 25.2 10.4121 25.2 12.0444Z" fill="currentColor"/>
+                                            <path d="M19.6 22.3889C19.6 19.1243 17.0927 16.4778 14 16.4778C10.9072 16.4778 8.39999 19.1243 8.39999 22.3889V26.8222H19.6V22.3889Z" fill="currentColor"/>
+                                            <path d="M8.39999 12.0444C8.39999 13.6768 7.14639 15 5.59999 15C4.05359 15 2.79999 13.6768 2.79999 12.0444C2.79999 10.4121 4.05359 9.08889 5.59999 9.08889C7.14639 9.08889 8.39999 10.4121 8.39999 12.0444Z" fill="currentColor"/>
+                                            <path d="M22.4 26.8222V22.3889C22.4 20.8312 22.0195 19.3671 21.351 18.0949C21.6863 18.0039 22.0378 17.9556 22.4 17.9556C24.7197 17.9556 26.6 19.9404 26.6 22.3889V26.8222H22.4Z" fill="currentColor"/>
+                                            <path d="M6.64896 18.0949C5.98058 19.3671 5.59999 20.8312 5.59999 22.3889V26.8222H1.39999V22.3889C1.39999 19.9404 3.2804 17.9556 5.59999 17.9556C5.96219 17.9556 6.31367 18.0039 6.64896 18.0949Z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{students|length}}</h4>
+                                        <div class="text-gray-500">Total Students</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-pink-600 bg-opacity-75">
+                                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                            width="24" height="24"
+                                            viewBox="0 0 172 172"
+                                            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M37.625,17.91667c-8.89025,0 -16.125,7.23475 -16.125,16.125v78.83333c0,8.89025 7.23475,16.125 16.125,16.125h19.70833v-10.75h-19.70833c-2.96342,0 -5.375,-2.41158 -5.375,-5.375v-1.79167h25.08333v-51.95833c0,-0.60558 0.04798,-1.19683 0.09098,-1.79167h-9.04932c-2.97058,0 -5.375,-2.40442 -5.375,-5.375c0,-2.97058 2.40442,-5.375 5.375,-5.375h12.65365c4.14592,-6.45358 11.3726,-10.75 19.59635,-10.75h26.875v-1.79167c0,-8.89025 -7.23475,-16.125 -16.125,-16.125zM80.625,43c-8.89025,0 -16.125,7.23475 -16.125,16.125v78.83333c0,8.89025 7.23475,16.125 16.125,16.125h64.5c2.97058,0 5.375,-2.40442 5.375,-5.375c0,-2.97058 -2.40442,-5.375 -5.375,-5.375h-64.5c-2.96342,0 -5.375,-2.41158 -5.375,-5.375v-1.79167h69.875c2.97058,0 5.375,-2.40442 5.375,-5.375v-71.66667c0,-8.89025 -7.23475,-16.125 -16.125,-16.125zM91.375,71.66667h32.25c2.97058,0 5.375,2.40442 5.375,5.375c0,2.97058 -2.40442,5.375 -5.375,5.375h-32.25c-2.97058,0 -5.375,-2.40442 -5.375,-5.375c0,-2.97058 2.40442,-5.375 5.375,-5.375z"></path></g></g></svg>
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{subjects|length}}</h4>
+                                        <div class="text-gray-500">Available Subjects</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+
+                    </div>
+
+                    <div class="flex flex-col mt-8">
+                    
+                        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                        <h3 class="text-gray-700 text-xl font-medium pb-4">Your Data</h3>
+                            
+                            <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                                <table class="min-w-full">
+                                    <thead>
+                                    <tr>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Year</th>
+                                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody class="bg-white">
+                                    {% for note in notes %}
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                <div class="ml-4">
+                                                    <div class="text-sm leading-5 font-medium text-gray-900"><a href="{{note.dept.shortname}}/{{note.Subject.short_name}}/{{note.slug_c}}/{{note.slug_t}}">{{note.chapter_name}}</a></div>
+                                                    <div class="text-sm leading-5 text-gray-500">{{note.dept}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <div class="text-sm leading-5 text-gray-900">{{note.topic_name}}</div>
+                                            <div class="text-sm leading-5 text-gray-500">{{note.Subject}}</div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{note.year}} Yr</td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                                            {% if note.author == user %}
+                                            <a href="{% url 'facultynoteupdate' note.id%}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <a href="{%url 'notes-delete' note.id %}" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %} 
+                                    <tr>
+                                       
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+     {% endblock %}
+
+     {% block studentcontent %}
+    <main class="flex-1 overflow-x-hidden overflow-y-auto  pb-8" >
+       <div class="container mx-auto px-6 py-8">
+       {% comment %} <img class="object-cover h-48 w-full"src="https://i.ibb.co/L9ytGYy/3784896.jpg"> {% endcomment %}
+            {% comment %} <div class="mt-4"> {% endcomment %}
+            <div class="p-6 bg-indigo-200  rounded-md shadow-md" style="background:url('https://image.freepik.com/free-vector/machine-learning-banner-artificial-intelligence_107791-611.jpg');background-position:left">
+             
+            <h3 class="text-white text-3xl font-extrabold " style="padding-bottom:5px"> Hello,{{ user.username}}</h3>
+            <p class="text-white font-bold">{{user.profile.student.year}}th Year / {{user.profile.student.dept}}</p>
+          {% comment %} </div> {% endcomment %}
+        </div>
+    </div>
+      
+    
+    <div class="container">
+    <h3 class="text-gray-700 text-xl font-bold pb-2">Departments</h3>
+    <div class="flex flex-wrap -mb-4">
+        {% for dept in depts %}
+        
+            <div class="px-6 py-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/3 mb-4" >
+            <div class=" bg-white rounded-md shadow-md" style="height:100px">
+           <h3 class="p-4 text-black text-base sm:text-sm md:text-base lg:text-lg xl:text-lg "> <a href="{{dept.shortname}}" class="text-black"><strong>{{dept}}</strong></a></h3>
+
+            </div></div>
+            {% endfor %}
+          
+   </div>
+            
+                  <div class="flex flex-col ">
+                    
+                        <div class=" flex-initial -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                        <h3 class="text-gray-700 text-xl font-medium pb-4">CSE Notes Latest</h3>
+                            
+                            <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                                <table class="min-w-full">
+
+                                    <tbody class="bg-white">
+                                    {% for note in allnotes %}
+                                    {% if note.dept.shortname == user.profile.student.dept and note.year == user.profile.student.year  %}
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                <div class="ml-4">
+                                                    <div class="text-sm leading-5 font-medium text-gray-900"><a href="{{note.dept.shortname}}/{{note.Subject.short_name}}/{{note.slug_c}}/{{note.slug_t}}">{{note.chapter_name}}</a></div>
+                                                    <div class="text-sm leading-5 text-gray-500">{{note.dept}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <div class="text-sm leading-5 text-gray-900">{{note.topic_name}}</div>
+                                            <div class="text-sm leading-5 text-gray-500">{{note.Subject}}</div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{note.year}} Yr</td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                                            {% if note.author == user %}
+                                            <a href="{% url 'facultynoteupdate' note.id%}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <a href="{%url 'blog-delete' note.id %}" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %} 
+                                    <tr>
+                                       
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+   </div>
+         </main>
+
+     {% endblock studentcontent %}

@@ -1,0 +1,20 @@
+{% extends 'home_base.html' %}
+{%block title%}
+Student
+{%endblock%}
+{% block studentcontent %}
+<div class="container">
+
+{% for note in answers %}
+    {% if note|length == 0 %}
+        {% if note.answer_by.username == user.username %}
+            <h1 class="pt-4">{{note.question}}</h1>
+             <p class="align-self-start  badge badge-primary p-2">{{note.answer_by}}</p>
+            {{note.answer|safe}}
+         {% endif %}
+        {% else %}
+            No Anwers written {{user.username}}
+        {% endif %}
+{% endfor %} 
+{% endblock  %}
+</div>

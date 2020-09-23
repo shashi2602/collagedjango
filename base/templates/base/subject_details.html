@@ -1,0 +1,74 @@
+{% extends 'home_base.html' %} {% load embed_video_tags %} 
+{%block title%}
+{{subject}}
+{%endblock%}
+{% block studentcontent %}
+<nav aria-label="breadcrumb" class="container">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/dashboard" class="text-black">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="/{{dept}}" class="text-black">{{dept}}</a></li>
+    <li class="breadcrumb-item active text-blue-800" aria-current="page">{{subject}}</li>
+
+  </ol>
+</nav>
+<div class="container">
+    <div class="container mx-auto px-6 py-8">
+            <div class="p-6 bg-indigo-200  rounded-md shadow-md" style="background:url('https://image.freepik.com/free-vector/square-halftone-pattern_1409-1064.jpg');background-position:left">
+             
+            <h3 class="text-white text-3xl font-extrabold text-center" style="padding-bottom:5px"> {{ subject}}</h3>
+    
+        </div>
+    </div>
+  {% if subs|length == 0 %}
+        <div class="container">
+          <h3 class="text-center">Not Content</h3>
+        </div>
+  {% else %}
+  <div class="container">
+    <div class="flex flex-col ">
+                    
+                        <div class=" flex-initial -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                        <h3 class="text-gray-700 text-xl font-medium pb-4">CSE Notes</h3>
+                            
+                            <div class="align-middle inline-block min-w-full  overflow-hidden sm:rounded-lg border-b border-gray-200">
+                                <table class="min-w-full">
+
+                                    <tbody class="bg-white">
+                                    {% for note in subs %}
+                                    {% if note.dept.shortname == user.profile.student.dept %}
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                                <div class="ml-4">
+                                                    <div class="text-sm leading-5 font-medium text-gray-900"><a href="/{{note.dept.shortname}}/{{note.Subject.short_name}}/{{note.slug_c}}/{{note.slug_t}}">{{note.chapter_name}}</a></div>
+                                                    <div class="text-sm leading-5 text-gray-500">{{note.dept}}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                            <div class="text-sm leading-5 text-gray-900">{{note.topic_name}}</div>
+                                            <div class="text-sm leading-5 text-gray-500">{{note.Subject}}</div>
+                                        </td>
+
+                                      
+
+                                        
+
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %} 
+                                    <tr>
+                                       
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+   
+  {% endif %} 
+</div>
+  
+  
+  {% endblock %}
+

@@ -1,0 +1,76 @@
+{% extends 'home_base.html' %}
+{% block title%}
+Sutudent - Assingment questions
+{% endblock%}
+{% block studentcontent %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Assignments</li>
+  </ol>
+</nav>
+<div class="container pt-5">
+    
+{% for assignment in assignquestions %}
+    {%if assignment.dept.shortname == user.profile.student.dept  and assignment.year == user.profile.student.year%}
+    <div id="accordion" style="padding-top: 10px;">
+
+      <div class="card">
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href="#collapse{{assignment.id}}">
+            <p>
+            <span class="badge badge-warning">{{assignment.title}}  </span>
+              / <span class="badge badge-info"> {{assignment.subject.short_name}}</span> / 
+              {% for answer in ans %}
+              {% if answer.assignment.title == assignment.title %}
+                  {% if answer.submit_by.username == user.username %}
+                     <span  class="text-white font-bold badge badge-success" >Submitted</span>
+              {% endif %} 
+              {% endif %}
+              {% endfor %} 
+              </p>
+          </a>
+        </div>
+        <div id="collapse{{assignment.id}}" class="collapse show" data-parent="#accordion">
+          <div class="card-body">
+            <p>{{assignment.questions|safe}}</p>
+                 <a href="{% url 'submitassignment'%}">
+                <button type="button" class="btn btn-large btn-block btn-primary">Submit assignment</button>
+            </a></p>
+          </div>
+        </div>
+      </div>
+    <!-- <div id="accordion " >
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{assignment.id}}" aria-expanded="true" aria-controls="collapseOne">
+                   <p>{{assignment.title}} {{assignment.subject.short_name}}
+                    {% for answer in ans %}
+                    {% if answer.assignment.title == assignment.title %}
+                        {% if answer.submit_by.username == user.username %}
+                           <span  class="text-white font-bold badge badge-success" >Submitted</span>
+                    {% endif %} 
+                    {% endif %}
+                    {% endfor %} 
+                   </p> 
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapse{{assignment.id}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                 <p>{{assignment.questions|safe}}</p>
+                 <a href="{% url 'submitassignment'%}">
+                <button type="button" class="btn btn-large btn-block btn-primary">Submit assignment</button>
+            </a>
+                </div>
+              </div>
+            </div>
+            </div> -->
+    {%endif%}
+{% endfor %} 
+
+{% endblock  %}
+
+</div>

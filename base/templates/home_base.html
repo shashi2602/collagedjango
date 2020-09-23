@@ -1,0 +1,172 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://tailwindcomponents.com/css/component.dashboard-template.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-ekOryaXPbeCpWQNxMwSWVvQ0+1VrStoPJq54shlYhR8HzQgig1v5fas6YgOqLoKz" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<title>
+    {% block title %}
+    {% endblock %}
+</title>
+</head>
+<body class="h-screen" class="bg-gray-100">
+    {% if messages %}
+    {% for message in messages %}
+     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+     </div>
+    {% endfor %}  
+    </div>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 ">
+        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+
+        <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform  overflow-y-auto lg:translate-x-0 lg:static lg:inset-0" style="    background-color: #4e73df;
+        background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
+        background-size: cover">
+            <div class="flex items-center justify-center mt-8">
+                <div class="flex items-center">
+                    
+
+                    <span class="text-white text-2xl mx-2 font-semibold">Online edu</span>
+                </div>
+            </div>
+            <hr class="sidebar-divider d-none d-md-block">
+            <nav class="mt-10 ">
+                <a class="flex items-center mt-4 py-2 px-6 bg-opacity-25 text-white no-underline " href="{% url 'dashboard' %}" >
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 10C2 5.58172 5.58172 2 10 2V10H18C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z" fill="currentColor"/>
+                        <path d="M12 2.25195C14.8113 2.97552 17.0245 5.18877 17.748 8.00004H12V2.25195Z" fill="currentColor"/>
+                    </svg>
+
+                    <span class="mx-4">
+                   Dashboard
+                    
+                  </span>
+                </a>
+                {% if user.profile.isfaculty %}
+                <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:border" href="{% url 'notecreate' %}">
+                   <!-- <img src="https://img.icons8.com/android/24/000000/note.png"/> -->
+                   <i class="far fa-sticky-note fa-fw"></i>
+                    <span class="mx-4">Create Notes</span>
+                </a>
+                <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'createquestion' %}">
+                    <i class="fas fa-question-circle fa-fw"></i>
+
+                    <span class="mx-4">Create Question</span>
+                </a>
+                  <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'questions' %}">
+                  <img src="https://img.icons8.com/metro/24/FFFFFF/faq.png"/>
+
+                    <span class="mx-4">Questions</span>
+                </a>
+                <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'createassignment' %}">
+                    <img src="https://img.icons8.com/metro/24/FFFFFF/faq.png"/>
+  
+                      <span class="mx-4">Create Assignment</span>
+                  </a>
+                  <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'facultyassignments' %}">
+                    <img src="https://img.icons8.com/metro/24/FFFFFF/faq.png"/>
+  
+                      <span class="mx-4">Assignments</span>
+                  </a>
+                  
+                {% else %}
+                    <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'studentquestions' %}" >
+                   <img src="https://img.icons8.com/windows/24/FFFFFF/quora.png"/>
+
+                    <span class="mx-4"><strong>
+                    Questions
+                    
+                    </strong></span>
+                </a>
+
+                 <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'studentanswered' %}">
+                  <img src="https://img.icons8.com/metro/24/FFFFFF/faq.png"/>
+
+                    <span class="mx-4"><strong>Answered</strong></span>
+                </a> 
+                <a class="flex items-center mt-4 py-2 px-6 no-underline  text-white  hover:hover:text-white" href="{% url 'allassignments' %}">
+                    <img src="https://img.icons8.com/metro/24/FFFFFF/faq.png"/>
+  
+                      <span class="mx-4"><strong>Assignment</strong></span>
+                  </a> 
+        {% endif %}
+            </nav>
+        </div>
+
+
+        <div class="flex-1 flex flex-col overflow-hidden" >
+        
+            <div class="flex justify-between items-center py-4 px-6 bg-gray-700 ">
+                <div class="flex items-center">
+                    <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div class="relative mx-4 lg:mx-0">
+                     <h3 class="text-white text-3xl font-medium"> {% if user.profile.isfaculty%}
+                       Faculty Dashboard
+                    {% else %}
+                        Student Dashboard
+                    {% endif %}</h3>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <button class="flex mx-4 text-gray-600 focus:outline-none">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 17H20L18.5951 15.5951C18.2141 15.2141 18 14.6973 18 14.1585V11C18 8.38757 16.3304 6.16509 14 5.34142V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V5.34142C7.66962 6.16509 6 8.38757 6 11V14.1585C6 14.6973 5.78595 15.2141 5.40493 15.5951L4 17H9M15 17V18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18V17M15 17H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div x-data="{ dropdownOpen: false }"  class="relative">
+                        <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 block h-8 w-8 rounded-full overflow-hidden shadow focus:outline-none">
+                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=296&q=80" alt="Your avatar">
+                        </button>
+
+                        <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
+
+                        <div x-show="dropdownOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">{{ user.username}}</a>
+                            <a href="{% url 'account_email' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Change E-mail</a>
+                            <a href="{% url 'account_change_password' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Change Password</a>
+                            <a href="{% url 'account_reset_password' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Forget Password</a>
+                            <a href="{% url 'account_logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+             {% if user.profile.isfaculty %}
+                {% block facultycontent %}
+                {% endblock facultycontent %}
+            {% else %}
+                {% block studentcontent %}
+                {% endblock studentcontent %} 
+            {% endif %}
+             
+                {% block content %}
+                {% endblock content %}
+             
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'home_base.html' %}
+{% block studentcontent %}
+ <h1>welcome student</h1>
+    {% for note in depts %}
+       
+       
+        <p>{{note.short_name}}</p>
+    {% endfor %}
+{% endblock studentcontent %}

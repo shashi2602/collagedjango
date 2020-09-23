@@ -1,0 +1,29 @@
+{% extends 'home_base.html' %}
+{% block title %}
+{{qns}}
+    {% endblock %}
+{% block facultycontent %}
+<div class="container">
+<h1 class="pt-4">{{qns}}</h1>
+{% for note in ans %}
+    {% if note|length == 0 %}
+    <div class="card">
+        <div class="card-body">
+
+        
+    <p class="align-self-start "><span class="badge badge-primary p-2">{{note.answer_by}}</span> <span class="badge badge-info p-2">{{note.answer_by.profile.student.year}}yr</span> </p>
+    {{note.answer|safe}}
+</div>
+</div>
+<hr>
+   {% comment %} <p> <a href="/{{note.slug_q}}">{{note.question}}/{{note.dept}}/{{note.question_by}}</a></p> {% endcomment %}
+        {% comment %} {% if note.author == user %}
+            <a type="button" class="btn btn-secondary" href="{% url 'facultynoteupdate' note.id%}">Update</a>
+            <a type="button" class="btn btn-danger" href="{%url 'blog-delete' note.id %}">Delete</a>
+        {%endif%} {% endcomment %}
+        {% else %}
+            No Anwers written {{user.username}}
+        {% endif %}
+{% endfor %} 
+{% endblock facultycontent %}
+</div>

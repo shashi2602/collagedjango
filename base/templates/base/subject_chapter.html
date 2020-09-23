@@ -1,0 +1,20 @@
+{% extends 'home_base.html' %} {% load embed_video_tags %} 
+{% block studentcontent %} 
+<nav aria-label="breadcrumb" class="bg-light container">
+  <ol class="breadcrumb" class="bg-light">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/">Departments</a></li>
+    <li class="breadcrumb-item active" aria-current="page">CSE</li>
+  </ol>
+</nav>
+<div class="container">
+{% for subject in subs %}
+
+<p>{{subject.Subject}}   {{subject.chapter_name}}</p>
+<p>{{subject.year}}/{{subject.sem}}/{{subject.dept}}</p>
+<h2>{{subject.chapter_name}}/{{subject.topic_name}}</h2>
+<p>{{subject.notes}}</p>
+{% video subject.video_clip_url "large" %}
+
+{% endfor %} {% endblock  %}
+</div> 

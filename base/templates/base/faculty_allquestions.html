@@ -1,0 +1,43 @@
+{% extends 'home_base.html' %}
+{% block title %}
+Faculty - Your Questions
+    {% endblock %}
+{% block facultycontent %}
+<div class="container pt-4">
+<div class="card">
+<div class="card-header">
+    <h5>Your Questions</h5>
+</div>
+<div class="card-body">
+<table class="table table-dark ">
+    <!-- <thead>
+        <tr>
+            <td>Questions</td>
+        </tr>
+    </thead> -->
+    <tbody>
+       
+{% for note in qus %}
+     {% if user.username == note.question_by.username %} 
+           
+     <tr>
+            <td>
+            <p class="text-lg font-normal"> <a href="/questions/{{note.slug_q}}" class="text-white">{{ forloop.counter }}.{{note.question}}</a>
+               
+               <span class="badge badge-info">{{note.dept.shortname}}</span>
+
+                </p>
+        </td>
+        <td>
+            <a href="{% url 'deletequestion' note.id %}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+         {% endif %}
+{% endfor %} 
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock facultycontent %}

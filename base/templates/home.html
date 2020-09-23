@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<div class="container">
+  {%if user.is_authenticated %}
+    <div class="container mb-5 " style="padding-top:20px">
+    <h1>Hi {{ user.username}}</h1>
+    <p>{{user.profile.student.year}}th Year / {{user.profile.student.dept}}</p>
+    </div>
+    <div class="container">
+    <div class="row">
+        {% for dept in depts %}
+            <div class="col-md-4">
+                <div class="card mb-4 bg-info" style="height:200px">
+                    <div class="card-body text-center " style="padding-top:80px">
+                         <a href="{{dept.name}}" class="text-white" style="font-size:20px"><strong>{{dept}}</strong></a>
+                     </div>
+                 </div>
+            </div>
+
+        {% endfor %} 
+   </div>
+   </div>
+  {%endif%}
+</div>
+{% endblock %}

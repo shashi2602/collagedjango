@@ -1,0 +1,21 @@
+{% comment %} {% extends 'home_base.html' %}
+{% block title %}
+Faculty - Notes
+    {% endblock %}
+{% block facultycontent %}
+<div class="container">
+{%if notes|length == 0 %}
+    <div class="container">
+        <h3 class="text-center">Not Content</h3>
+      </div>
+    {% else %}
+{% for note in notes %}
+<a href="/post/{{note.id}}/delete">{{note.chapter_name}}/{{note.dept}} </a>
+        {% if note.author == user %}
+            <a type="button" class="btn btn-secondary" href="{% url 'facultynoteupdate' note.id%}">Update</a>
+            <a type="button" class="btn btn-danger" href="{%url 'blog-delete' note.id %}">Delete</a>
+        {%endif%}
+{% endfor %} 
+{%endif%}
+{% endblock facultycontent %}
+</div> {% endcomment %}
