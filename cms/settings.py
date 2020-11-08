@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = ')dk)(sxi%i%k7q#a-*6&q4pq50t6vz=6pu28=#x(gax$o!oxq8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -166,7 +166,7 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL="/dashboard"
 
 LOGOUT_REDIRECT_URL="/"
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
